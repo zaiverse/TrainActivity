@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Choo Choo</title>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.slim.js"
+    integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+  </head>
+  <body>
+
+    <table class="table container1">
+        <h5 class ="description">Current Train Time</h5>
+        <thead>
+          <tr>
+            <th scope="col">Train Name</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Frequency(min)</th>
+            <th scope="col">Next Arrival</th>
+            <th scope="col">Minutes Away</th>
+          </tr>
+        </thead>
+        <tbody class = "addMore">
+          <tr>
+            <td>Hogwarts Express</td>
+            <td>Hogwarts</td>
+            <td>20</td>
+            <td>calculated time</td>
+            <td>11</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h5 class="description">Add a Train</h5>
+      <form class ="container1">
+          <div class="form-group">
+                <label>Train name</label>
+                <input class="form-control addd" id="trainAdded" placeholder="Enter train name">
+            </div>
+            <div class="form-group">
+                <label>Destination</label>
+                <input class="form-control" id="destinationAdded" placeholder="Enter destination">
+            </div>
+            <div class="form-group">
+                <label>First Train Time (HH:mm - military time)</label>
+                <input class="form-control" id="timeAdded" placeholder="Enter time">
+            </div>
+            <div class="form-group">
+                <label>Frequency (min)</label>
+                <input class="form-control" id="frequencyAdded" placeholder="Enter frequency">
+            </div>
+            <div><button id = "submit">Submit</button></div>
+      </form>
+
+    <script>
+        // Initialize Firebase
+        var config = {
+        apiKey: "AIzaSyDBCN1DwIGEDDrJJv2g1fxzzvdLgp9qQgA",
+        authDomain: "trainproject-96839.firebaseapp.com",
+        databaseURL: "https://trainproject-96839.firebaseio.com",
+        projectId: "trainproject-96839",
+        storageBucket: "trainproject-96839.appspot.com",
+        messagingSenderId: "972942728368"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="assets/javascript.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
