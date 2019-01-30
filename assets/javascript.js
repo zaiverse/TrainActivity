@@ -1,4 +1,4 @@
-var firebaseRef = firebase.database();
+var firebaseRef = firebase.database().ref('/table');
 
 $('#submit').on("click", function(event){
     event.preventDefault();
@@ -9,36 +9,30 @@ $('#submit').on("click", function(event){
     var trainfrequency = $('#frequencyAdded').val();
 
     
-    var storeData = {
+    firebaseRef.set({
         name: trainname,
         destination: traindestination,
-        frequency: trainfrequency,
         time: traintime,
-    };
+        frequency: trainfrequency,
 
-     firebaseRef.ref().push(storeData);
+    })
 
     $('.form-control').val('');
 
-
 })
 
-firebaseRef.ref().on("value", function(Snapshot) {
+firebaseRef.on("value", function(Snapshot) {
 
-    trainname = Snapshot.val().name;
-    traindestination = Snapshot.val().destination;
-    trainfrequency = Snapshot.val().frequency;
-    traintime = Snapshot.val().time;
+    var trainname = Snapshot.val().name;
+    var traindestination = Snapshot.val().destination;
+    var traintime = Snapshot.val().time;
+    var trainfrequency = Snapshot.val().frequency;
 
     var trainOriginalTime = moment(traintime, "HH:mm").subtract(1, "years");
     var current = moment().diff(moment(trainOriginalTime), "minutes");
     var Remainder = current % trainfrequency;
     var MinutesTillTrain = trainfrequency - Remainder;
     var nextTrain = moment().add(MinutesTillTrain, "minutes");
-
-    console.log(trainname);
-    console.log(traindestination);
-    console.log(nextTrain);
 
     var creatingTr= $("<tr>").append(
         $("<td>").append(trainname),
@@ -47,6 +41,9 @@ firebaseRef.ref().on("value", function(Snapshot) {
         $("<td>").append(nextTrain.format("hh:mm")),
         $("<td>").append(MinutesTillTrain),
     )
+
+    console.log(creatingTr)
+
 
     $('tbody').append(creatingTr);
 
